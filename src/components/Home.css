@@ -1,0 +1,17 @@
+.main-card {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.title {
+  color: blue;
+  justify-content: center;
+}
+
+
+.acct-links {
+  display: flex;
+  padding: 10px;
+  justify-content: space-evenly;
+}

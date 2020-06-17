@@ -1,0 +1,17 @@
+.balance {
+  display: flex;
+  justify-content: center;
+
+}
+
+.bal-card.card {
+  width: 500px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.acct-message {
+  display: flex;
+  justify-content: space-evenly;
+}
+

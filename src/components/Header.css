@@ -1,0 +1,52 @@
+.header {
+  overflow: hidden;
+  background-color: #f1f1f1;
+  height: 100px;
+  padding: 20px 10px;
+}
+
+/* Style the header links */
+.header a {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 25px;
+  border-radius: 4px;
+}
+
+.header {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.blockchain {
+  font-family: 'Chonburi',
+  cursive;
+  cursor: pointer;
+
+}
+
+.acct {
+  font-size: 11px;
+  color: #696969
+}
+
+.header-right {
+  float: right;
+}
+
+
+@media screen and (max-width: 500px) {
+  .header {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+
+  .header-right {
+    float: none;
+  }
+}
