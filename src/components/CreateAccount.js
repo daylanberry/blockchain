@@ -29,7 +29,7 @@ class CreateAccount extends React.Component {
       return
     }
 
-    addAcct({ acct, privateKey: Buffer.from(privateKey) })
+    addAcct({ acct, privateKey })
     history.push('/balance')
   }
 

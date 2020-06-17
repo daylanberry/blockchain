@@ -4,3 +4,23 @@
   margin-top: 10px;
   text-align: center;
 }
+
+.transaction-sub {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.tran-table {
+  color: blue;
+}
+
+.transaction-error {
+  width: 300px;
+  margin-top: 10px;
+}
+
+.transaction-btn {
+  width: 150px;
+}
+
+

@@ -18,7 +18,7 @@ const Home = (props) => {
             Note* This is a test application so please use the Ropsten Test Network option in MetaMask.
           </Card.Subtitle>
           <Card.Text>
-            In order for you to send transactions and get data, this test application requires you to have an account number and private key through MetaMask. Please use the following links to either get set up or continue.
+            In order for you to send transactions and get data, this test application requires you to have an account number and <b>private key</b> through MetaMask. Please use the following links to either get set up or continue.
           </Card.Text>
 
           <div className='acct-links'>

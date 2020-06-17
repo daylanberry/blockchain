@@ -40,12 +40,13 @@ class Balance extends React.Component {
     const { searchedAcct } = this.props
 
     if (searchedAcct === defaultAcct) {
-      message = 'For testing purposes, if a user inputs an invalid address or no address, the program will default to my address :)'
+      message = 'For testing purposes, if a user inputs an invalid address or no address in the Add Account section, the program will default to my address :)'
     }
 
     const web3 = new Web3(uri)
 
     try {
+      //calculate balance in wei and convert to ether
       web3.eth.getBalance(searchedAcct, (err, bal) => {
 
         let etherAmt = web3.utils.fromWei(bal, 'ether')
@@ -87,11 +88,8 @@ class Balance extends React.Component {
 
   changeAcct = (typedAcct) => {
 
-    if (typedAcct.length < 40) {
-      alert('This is an invalid account')
-      return
-    }
     this.props.search(typedAcct)
+
   }
 
 
