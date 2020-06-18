@@ -5,7 +5,7 @@ const INITIAL_STATE = {
     acct: "0x3c5ca637008be36e9697F09fdd62367F16a0f573",
     privateKey: ''
   },
-  searchedAcct: "0x3c5ca637008be36e9697F09fdd62367F16a0f573"
+  searchedAcct: "0x6C095A05764A23156eFD9D603eaDa144a9B1AF33"
 }
 
 export const accountReducer = (state=INITIAL_STATE, action) => {

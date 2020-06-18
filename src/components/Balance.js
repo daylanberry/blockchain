@@ -35,12 +35,12 @@ class Balance extends React.Component {
     const { uri } = this.state
 
     let
-    defaultAcct = "0x3c5ca637008be36e9697F09fdd62367F16a0f573"
+    defaultAcct = "0x6C095A05764A23156eFD9D603eaDa144a9B1AF33"
     let message = ''
     const { searchedAcct } = this.props
 
     if (searchedAcct === defaultAcct) {
-      message = 'For testing purposes, if a user inputs an invalid address or no address in the Add Account section, the program will default to my address :)'
+      message = 'For testing purposes, if a user inputs an invalid or no address in the Add Account section, the program will default to given Registry Contract.'
     }
 
     const web3 = new Web3(uri)

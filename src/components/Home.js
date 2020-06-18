@@ -19,6 +19,10 @@ const Home = (props) => {
           </Card.Subtitle>
           <Card.Text>
             In order for you to send transactions and get data, this test application requires you to have an account number and <b>private key</b> through MetaMask. Please use the following links to either get set up or continue.
+
+            Go to <Card.Link href={`https://faucet.ropsten.be/`}>
+                https://faucet.ropsten.be/
+              </Card.Link> to deposit test ether.
           </Card.Text>
 
           <div className='acct-links'>

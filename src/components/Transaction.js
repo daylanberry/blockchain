@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import './Transaction.css'
 import AccountTable from './AccountTable'
+import SuccessModal from './SuccessModal'
 import { Button, Alert } from 'react-bootstrap'
 import * as helpers from '../utils'
 
@@ -16,13 +17,14 @@ class Transaction extends React.Component {
       toAcct: '0x6C095A05764A23156eFD9D603eaDa144a9B1AF33',
       privateKey: '',
       ether: '',
-      error: ''
+      error: '',
+      modal: false
     }
 
   }
 
   componentDidMount() {
-    console.log(this.props.userAccount)
+
     const { privateKey, acct } = this.props.userAccount
 
     if (privateKey.length) {
@@ -30,6 +32,8 @@ class Transaction extends React.Component {
         fromAcct: acct,
         privateKey
       })
+    } else {
+      this.handleError("You don't have a private key set up yet!")
     }
   }
 
@@ -37,21 +41,31 @@ class Transaction extends React.Component {
     this.setState({[e.target.name]: e.target.value, error: ''})
   }
 
-  handleError = () => {
+  handleError = (message) => {
     this.setState({
-      error: 'This is an invalid account/private Key'
+      error: message
     })
   }
 
+  successHandler = () => {
+    this.setState({error: '', modal: true})
+  }
+
+  //If the submission is successful I use the successHandler to display the modal page, else the error function will render the error message on the page
   submitTransaction = () => {
 
-    const { fromAcct, toAcct, privateKey } = this.state;
+    const { fromAcct, toAcct, privateKey, ether } = this.state;
+
+    if (!ether.length || isNaN(ether)) {
+      this.handleError("You don't have a proper ether value")
+      return
+    }
 
     try {
-      helpers.makeTransaction(fromAcct, toAcct, Buffer.from(privateKey, 'hex'), '.02', this.handleError)
-      this.setState({error: ''})
+      helpers.makeTransaction(fromAcct, toAcct, Buffer.from(privateKey, 'hex'), ether, this.handleError, this.successHandler)
+
     } catch(e) {
-      this.handleError()
+      this.handleError('This is an invalid account/private Key')
     }
   }
 
@@ -67,24 +81,35 @@ class Transaction extends React.Component {
     }
   }
 
+  toggleModal = () => {
+    const { modal } = this.state
+    this.setState({modal: !modal})
+  }
+
 
   render() {
-    const { fromAcct, toAcct, privateKey, error } = this.state
+    const { fromAcct, toAcct, ether, privateKey, error, modal } = this.state
 
     return (
       <div>
         <div>
           <h3 className='transaction-title'>Make a Transaction</h3>
           <div className='transaction-sub'>
-            <span>This sends transactions to given registry</span>
+            <span>This sends ether to given registry</span>
           </div>
         </div>
         <AccountTable
           handleChange={this.handleChange}
           fromAcct={fromAcct}
           toAcct={toAcct}
+          ether={ether}
         />
-
+        <SuccessModal
+          toAcct={toAcct}
+          modal={modal && !error.length}
+          toggleModal={this.toggleModal}
+          ether={ether}
+        />
         <div>
           <div>
             <Button
